@@ -34,8 +34,8 @@ client.on('message', async message=>{
         }
         
 
-        if (message.content === '^zenith'){
-            message.channel.send('Zeni e nab si sclavu lu ramer lol haha salamtroll');
+        if (message.content === '^flawless'){
+            message.channel.send('Flawless e baiat dragut ^^');
         }
         if(message.content === '^avatar'){
             message.channel.send(message.author.displayAvatarURL());}
