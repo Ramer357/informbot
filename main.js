@@ -10,15 +10,15 @@ const owner = 'Ramer';
 
 const PREFIX = '^';
 
-client.once('ready', () => {
+client.on('ready', () => {
     console.log('Inform is online!');
     client.user.setActivity('^help');
 });
 
-client.once('message', async message=>{
+client.on('message', async message=>{
 
     let args = message.content.slice(PREFIX.length).split(" ");
-
+  
         //embed
             if(message.content === '^info'){
               const embed = new Discord.MessageEmbed()
