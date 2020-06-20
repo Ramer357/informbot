@@ -108,7 +108,7 @@ client.on('message', async message=>{
           }
         }
 
-        if (message.content === '^ban')
+        if (message.content === '^ban'){
           if(!message.member.roles.cache.find(r => r.name === "Baieti Amuzanti")) return message.channel.send('Nu ai permisiuni de a da ban!')
           if (!args[1]) message.channel.send('Trebuie sa ii dai tag celui caruia vrei sa-i dai ban!')
 
@@ -143,7 +143,7 @@ client.on('message', async message=>{
             message.channel.send(embedOwner);
 
     }
-
+        }
     
 
   })
