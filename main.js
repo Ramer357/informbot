@@ -8,8 +8,6 @@ const version = '1.0';
 
 const owner = 'Ramer';
 
-const PREFIX = '^';
-
 client.on('ready', () => {
     console.log('Inform is online!');
     client.user.setActivity('^help');
@@ -17,8 +15,7 @@ client.on('ready', () => {
 
 client.on('message', async message=>{
 
-    let args = message.content.slice(PREFIX.length).split(" ");
-
+  
         //embed
             if(message.content === '^info'){
               const embed = new Discord.MessageEmbed()
@@ -146,9 +143,7 @@ client.on('message', async message=>{
             message.channel.send(embedOwner);
 
     }
-  }
-  
-
+        }
     
 
   })
