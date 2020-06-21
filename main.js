@@ -4,7 +4,7 @@ const client = new Discord.Client();
 
 const ms = require('ms');
 
-const version = '1.0.5';
+const version = '1.0.6';
 
 const owner = 'Ramer';
 
@@ -25,8 +25,8 @@ client.on('message', async message => {
       .addField('Version of the BOT', version)
       .addField('Current Server', message.guild.name)
       .setColor(0x00A1FF)
-      .setThumbnail(message.author.avatarURL)
-    message.channel.send(embed);
+      .setThumbnail(message.author.avatarURL);
+      message.channel.send(embed);
   }
 
   if (message.content === '^salut') {
@@ -47,9 +47,10 @@ client.on('message', async message => {
       .addField('El a scris comanda', message.author.username + ' e vina lui nu a mea')
       .addField('Adevar', 'Erweck e prost hahaha lol')
       .addField('Plus dovadaaa', 'nu e dovada ca e prea prost hahaha')
-      .addField('Esti naber', 'Ai bulan si esti si nici cu ala nu poti sa faci peste 3 killuri');
-    message.channel.send(embedErweck);
-    message.channel.send('joke nu te supara lol');
+      .addField('Esti naber', 'Ai bulan si esti si nici cu ala nu poti sa faci peste 3 killuri')
+      .setThumbnail(message.author.avatarURL);
+      message.channel.send(embedErweck);
+      message.channel.send('joke nu te supara lol');
   }
 
   if (message.content === '^ramer')
