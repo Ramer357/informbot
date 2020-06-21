@@ -55,7 +55,7 @@ client.on('message', async message=>{
         }
         
         if(message.content === '^ramer')
-            message.channel.send(`da ma ce ramer e owneru si e boss`);
+            message.channel.send(`Da bro ramer este creatorul meu, el m-a creat de la 0!!`);
         if(message.content === '^zrelax'){
             const embedRelax = new Discord.MessageEmbed()
             .setTitle('zRelax e sclavul lui ' + message.author.username)
