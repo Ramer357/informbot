@@ -18,7 +18,7 @@ client.on('ready', () => {
 client.on('message', async message=>{
 
     let args = message.content.slice(PREFIX.length).split(" ");
-  
+
         //embed
             if(message.content === '^info'){
               const embed = new Discord.MessageEmbed()
@@ -37,8 +37,8 @@ client.on('message', async message=>{
         }
         
 
-        if (message.content === '^zenith'){
-            message.channel.send('Zeni e nab si sclavu lu ramer lol haha salamtroll');
+        if (message.content === '^flawless'){
+            message.channel.send('Flawless e baiat frumos si co ownerul meu ^^');
         }
         if(message.content === '^avatar'){
             message.channel.send(message.author.displayAvatarURL());}
@@ -55,7 +55,7 @@ client.on('message', async message=>{
         }
         
         if(message.content === '^ramer')
-            message.channel.send(`!kick @Erweck#5109`);
+            message.channel.send(`da ma ce ramer e owneru si e boss`);
         if(message.content === '^zrelax'){
             const embedRelax = new Discord.MessageEmbed()
             .setTitle('zRelax e sclavul lui ' + message.author.username)
@@ -87,7 +87,7 @@ client.on('message', async message=>{
         //Moderation coms:
 
         if(message.content === '^kick'){
-          if(!message.member.roles.cache.find(r => r.name === "Baieti Smecheri")) return message.channel.send('Nu ai permisiuni de a da kick!')
+          if(!message.member.roles.cache.find(r => r.name === "Baieti Smecheri" || r.name === 'Baieti Amuzanti')) return message.channel.send('Nu ai permisiuni de a da kick!')
           if (!args[1]) message.channel.send('Trebuie sa ii dai tag celui caruia vrei sa-i dai kick!')
 
           const user = message.mentions.users.first();
@@ -111,7 +111,7 @@ client.on('message', async message=>{
           }
         }
 
-        if (message.content === '^ban')
+        if (message.content === '^ban'){
           if(!message.member.roles.cache.find(r => r.name === "Baieti Amuzanti")) return message.channel.send('Nu ai permisiuni de a da ban!')
           if (!args[1]) message.channel.send('Trebuie sa ii dai tag celui caruia vrei sa-i dai ban!')
 
@@ -146,6 +146,8 @@ client.on('message', async message=>{
             message.channel.send(embedOwner);
 
     }
+  }
+  
 
     
 
