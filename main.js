@@ -4,7 +4,7 @@ const client = new Discord.Client();
 
 const ms = require('ms');
 
-const version = '1.0';
+const version = '1.0.5';
 
 const owner = 'Ramer';
 
