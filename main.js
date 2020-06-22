@@ -68,7 +68,7 @@ client.on('message', async message => {
     .setTitle ('Tali$ - Diss Tali')
     .setColor ('0xFF0000')
     .addField ('Tali, ye ye ye', 'Esti prost, tali, sau prost')
-    .addField (' ','prost!');
+    .addField ('prost!');
 
     message.channel.send (embedTali);
     message.channel.send ('Ti-am dat-o rau de tot tali lasa-te de viata si du-te sa plangi intr-un colt te rog ahaha');
@@ -82,7 +82,7 @@ client.on('message', async message => {
       .setTitle('Help Commands')
       .setColor(0x00A1FF)
       .addField('Prefix', 'Prefixul este ^')
-      .addField('Comenzi Amuzante', 'erweck, ' + 'ramer, ' + 'zrelax, ' + 'tali, ' + 'zenith ' + 'flawless, ' + 'hks ' )
+      .addField('Comenzi Amuzante', 'erweck, ' + 'ramer, ' + 'zrelax, ' + 'tali, ' + 'zenith ' + 'flawless, ' + 'satana ' )
       .addField('Comenzi Diverse', 'avatar')
       .addField('Comenzi de Moderare', 'ban, ' + 'kick, ');
     message.channel.send(embedHelp);
