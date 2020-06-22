@@ -4,7 +4,7 @@ const client = new Discord.Client();
 
 const ms = require('ms');
 
-const version = '1.0.6';
+const version = '1.0.8';
 
 const owner = '</ramer>';
 
@@ -68,7 +68,7 @@ client.on('message', async message => {
     .setTitle ('Tali$ - Diss Tali')
     .setColor ('0xFF0000')
     .addField ('Tali, ye ye ye', 'Esti prost, tali, sau prost')
-    .setDescription ('prost!');
+    .addField (' ','prost!');
 
     message.channel.send (embedTali);
     message.channel.send ('Ti-am dat-o rau de tot tali lasa-te de viata si du-te sa plangi intr-un colt te rog ahaha');
