@@ -6,7 +6,7 @@ const ms = require('ms');
 
 const version = '1.0.6';
 
-const owner = 'Ramer';
+const owner = '</ramer>';
 
 client.on('ready', () => {
   console.log('Inform is online!');
@@ -63,8 +63,19 @@ client.on('message', async message => {
     message.channel.send(embedRelax);
   }
 
-  if (message.content === '^tali')
-    message.channel.send('ma pis pe voi frate ca jucati roblox ma pis in voi erweck si relax sunt prostiii');
+  if (message.content === '^tali'){
+    const embedTali = new Discord.MessageEmbed()
+    .setTitle ('Tali$ - Diss Tali')
+    .setColor ('0xFF0000')
+    .addField ('Tali, ye ye ye', 'Esti prost, tali, sau prost')
+    .setDescription ('prost!');
+
+    message.channel.send (embedTali);
+    message.channel.send ('Ti-am dat-o rau de tot tali lasa-te de viata si du-te sa plangi intr-un colt te rog ahaha');
+
+  }
+
+
 
   if (message.content === '^help') {
     const embedHelp = new Discord.MessageEmbed()
@@ -83,40 +94,41 @@ client.on('message', async message => {
       .setColor(0x00A1FF);
     message.channel.send(embedPrefix);
   }
-  if (message.content === '^hks'){
-    const embedHKS = new Discord.MessageEmbed()
-    .setTitle ("HKS 27D e genial ca a creat comunitatea fairside")
+  if (message.content === '^satana'){
+    const embedSatana = new Discord.MessageEmbed()
+    .setTitle ('Da satana mai trage bine nu' + message.author.username)
     .setColor(0xFFFE00)
-    .addField('Multumim!', 'Iti multumim ca ai creat aceasta comunitate minunata!');
+    .addField('Eu, '+ message.author.username, 'trag ca drq (ca erweck ahaha)');
 
     message.channel.send(embedHKS);
   }
 
   //Moderation coms:
 
-  if (message.content.startsWith === '^kick') {
+  if (message.content.startsWith('^kick')) {
     const user = message.mentions.users.first();
+    if (user) {
+      const member = message.guild.member(user);
+      // If the member is in the guild
+      if (member) {
 
-    if(user){
-        const member = message.guild.member(user);
-        if(member){
-          member.kick('E prost').then(() => {
-              message.reply(`I-am dat kick cu succes lui ${user.tag}`);
+        member
+          .kick('E prost')
+          .then(() => {
+            // We let the message author know we were able to kick the person
+            message.reply(`Am dat kick cu succes lui ${user.tag}`);
           })
           .catch(err => {
-            message.reply(`Nu am putut da kick lui ${user}`);
-
+            message.reply(`Nu am putut da kick lui ${user.tag}`);
             console.error(err);
-
           });
-        } else {
-          message.reply("Acel utilizator nu este in acest server!");
-        }
-
-    }else {
-      message.reply("Nu ai mentionat un utilizator caruia sa ii dau kick!");
+      } else {
+        message.reply("Acel utilizator nu este in acest server!");
+      }
+      // Otherwise, if no user was mentioned
+    } else {
+      message.reply("Nu ai mentionat cui sa-i dau kick!");
     }
-
   }
 
   if (message.content.startsWith === '^ban') {
@@ -150,7 +162,7 @@ client.on('message', async message => {
 
     if (message.content === '^owner') {
       const embedOwner = new Discord.MessageEmbed()
-        .setTitle('Ownerul meu este </ramer>#9999');
+        .setTitle(`Ownerul meu este </ramer>#9999`);
 
       message.channel.send(embedOwner);
 
