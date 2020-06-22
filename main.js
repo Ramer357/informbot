@@ -100,7 +100,7 @@ client.on('message', async message => {
     .setColor(0xFFFE00)
     .addField('Eu, '+ message.author.username, 'trag ca drq (ca erweck ahaha)');
 
-    message.channel.send(embedHKS);
+    message.channel.send(embedSatana);
   }
 
   //Moderation coms:
