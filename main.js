@@ -95,8 +95,8 @@ client.on('message', async message => {
   //Moderation coms:
 
   if (message.content === '^kick') {
-    if (!message.member.roles.cache.find(r => r.name === "Baieti Smecheri" || r.name === 'Baieti Amuzanti')) return message.channel.send('Nu ai permisiuni de a da kick!')
-    if (!args[1]) message.channel.send('Trebuie sa ii dai tag celui caruia vrei sa-i dai kick!')
+    if (!message.member.roles.cache.find(r => r.name === "Inform Bot Creator")) return message.channel.send('Nu ai permisiuni de a da kick!');
+    if (!args[1]) message.channel.send('Trebuie sa ii dai tag celui caruia vrei sa-i dai kick!');
 
     const user = message.mentions.users.first();
 
