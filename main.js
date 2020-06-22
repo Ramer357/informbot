@@ -94,32 +94,32 @@ client.on('message', async message => {
 
   //Moderation coms:
 
-  if (message.content === '^kick') {
-    if (!message.member.roles.cache.find(r => r.name === "Inform Bot Creator")) return message.channel.send('Nu ai permisiuni de a da kick!')
-    if (!args[1]) message.channel.send('Trebuie sa ii dai tag celui caruia vrei sa-i dai kick!')
-
+  if (message.content.startsWith === '^kick') {
     const user = message.mentions.users.first();
 
-    if (user) {
-      const member = message.guild.member(user);
+    if(user){
+        const member = message.guild.member(user);
+        if(member){
+          member.kick('E prost').then(() => {
+              message.reply(`I-am dat kick cu succes lui ${user.tag}`);
+          })
+          .catch(err => {
+            message.reply(`Nu am putut da kick lui ${user}`);
 
-      if (member) {
-        member.kick('Ai luat kick!').then(() => {
-          message.reply(`I-am dat kick lui ${user.tag}!`);
-        }).catch(err => {
-          message.reply('Nu am putut da kick acelei persoane!');
-          console.log(err);
-        })
-      } else {
-        message.reply('Acea persoana nu este in acest server!');
+            console.error(err);
 
-      }
-    } else {
-      message.reply('Acel utilizator nu este in acest server!')
+          });
+        } else {
+          message.reply("Acel utilizator nu este in acest server!");
+        }
+
+    }else {
+      message.reply("Nu ai mentionat un utilizator caruia sa ii dau kick!");
     }
+
   }
 
-  if (message.content === '^ban') {
+  if (message.content.startsWith === '^ban') {
     if (!message.member.roles.cache.find(r => r.name === "Baieti Amuzanti")) return message.channel.send('Nu ai permisiuni de a da ban!')
     if (!args[1]) message.channel.send('Trebuie sa ii dai tag celui caruia vrei sa-i dai ban!')
 
