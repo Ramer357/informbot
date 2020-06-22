@@ -96,7 +96,7 @@ client.on('message', async message => {
   }
   if (message.content === '^satana'){
     const embedSatana = new Discord.MessageEmbed()
-    .setTitle ('Da satana mai trage bine nu' + message.author.username)
+    .setTitle ('Da satana mai trage bine nu ' + message.author.username)
     .setColor(0xFFFE00)
     .addField('Eu, '+ message.author.username, 'trag ca drq (ca erweck ahaha)');
 
