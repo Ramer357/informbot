@@ -174,7 +174,7 @@ client.on('message', async message => {
 
   }
 
-  if (message.content.startsWith === '^p'){
+  if (message.content === '^play'){
       
         function play(connection, message){
           var server = servers[message.guild.id];
