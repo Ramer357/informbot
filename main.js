@@ -2,11 +2,15 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
+const ytdl = require('ytdl-core');
+
 const ms = require('ms');
 
 const version = '1.0.8';
 
 const owner = '</ramer>';
+
+var severs = {};
 
 client.on('ready', () => {
   console.log('Inform is online!');
@@ -109,13 +113,11 @@ client.on('message', async message => {
     const user = message.mentions.users.first();
     if (user) {
       const member = message.guild.member(user);
-      // If the member is in the guild
       if (member) {
 
         member
           .kick('E prost')
           .then(() => {
-            // We let the message author know we were able to kick the person
             message.reply(`Am dat kick cu succes lui ${user.tag}`);
           })
           .catch(err => {
@@ -125,7 +127,6 @@ client.on('message', async message => {
       } else {
         message.reply("Acel utilizator nu este in acest server!");
       }
-      // Otherwise, if no user was mentioned
     } else {
       message.reply("Nu ai mentionat cui sa-i dau kick!");
     }
@@ -160,13 +161,60 @@ client.on('message', async message => {
     }
     2
 
+    
+
+
+    }
+
     if (message.content === '^owner') {
       const embedOwner = new Discord.MessageEmbed()
         .setTitle(`Ownerul meu este </ramer>#9999`);
 
       message.channel.send(embedOwner);
 
-    }
+  }
+
+  if (message.content.startsWith === '^p'){
+      
+        function play(connection, message){
+          var server = servers[message.guild.id];
+
+          server.dispatcher = connection.play(ytdl(server.queue[0], {filter: "audioonly"}));
+
+          server.queue.shift();
+
+          server.dispatcher.on("end", function(){
+            if(server.queue[0]){
+              play(connection, message)
+            }else {
+              connection.disconnect();
+            }
+          })
+        }
+    
+        if(!args[1]){
+        message.channel.send('Trebuie sa scrii linkul melodiei!');
+        return;
+      }
+
+      if(!message.member.voiceChannel){
+        message.channel.send("Trebuie sa fii intr-un voice-channel!");
+        return;
+      }
+
+      if(!servers[message.guild.id]) servers[message.guild.id] = {
+        queue: []
+      }
+
+      var server = servers[message.guild.id];
+
+      server.queue.push(args[1]);
+
+      if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection){
+          play(connection,message);
+      })
+
+
   }
 
 
@@ -177,6 +225,12 @@ client.on('guildMemberAdd', member => {
   const channel = member.guild.channels.cache.find(ch => ch.name === '👋welcome-quit👋');
   if (!channel) return;
   channel.send(`Bine ai venit pe server, ${member}!`);
+});
+
+client.on('guildMemberRemove', member => {
+  const channel = member.guild.channels.cache.find(ch => ch.name === '👋welcome-quit👋');
+  if (!channel) return;
+  channel.send(`${member} ne-a parasit :((`);
 });
 
 
