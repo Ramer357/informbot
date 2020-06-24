@@ -10,6 +10,22 @@ const version = '1.0.8';
 
 const owner = '</ramer>';
 
+const fs = require('fs');
+
+client.commands = new Discord.Collection();
+
+const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
+
+for(const file of commandFiles){
+  const command = require(`./commands/${file}`);
+
+  client.commands.set(command.name, command);
+}
+
+
+
+
+
 var severs = {};
 
 client.on('ready', () => {
@@ -45,16 +61,7 @@ client.on('message', async message => {
     message.channel.send(message.author.displayAvatarURL());
   }
   if (message.content === '^erweck') {
-    const embedErweck = new Discord.MessageEmbed()
-      .setTitle('Erweck sucks lol salamtroll haha')
-      .setColor(0xFC00FF)
-      .addField('El a scris comanda', message.author.username + ' e vina lui nu a mea')
-      .addField('Adevar', 'Erweck e prost hahaha lol')
-      .addField('Plus dovadaaa', 'nu e dovada ca e prea prost hahaha')
-      .addField('Esti naber', 'Ai bulan si esti si nici cu ala nu poti sa faci peste 3 killuri')
-      .setThumbnail(message.author.avatarURL);
-      message.channel.send(embedErweck);
-      message.channel.send('joke nu te supara lol');
+    client.commands.get('erweck').execute(message, args);
   }
 
   if (message.content === '^ramer')
@@ -68,14 +75,7 @@ client.on('message', async message => {
   }
 
   if (message.content === '^tali'){
-    const embedTali = new Discord.MessageEmbed()
-    .setTitle ('Tali$ - Diss Tali')
-    .setColor ('0xFF0000')
-    .addField ('Tali, ye ye ye', 'Esti prost, tali, sau prost')
-    .addField('prost!', 'o ye');
-
-    message.channel.send (embedTali);
-    message.channel.send ('Ti-am dat-o rau de tot tali lasa-te de viata si du-te sa plangi intr-un colt si da-ti alt+f4 la viata ba hahaha');
+    client.commands.get('tali').execute(message, args);
 
   }
 
