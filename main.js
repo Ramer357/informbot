@@ -174,6 +174,10 @@ client.on('message', async message => {
 
   }
 
+    if(message.content.startsWith === '^8ball'){
+      client.commands.get('8ball').execute(message, args);
+    }
+
   if (message.content === '^play'){
       
         function play(connection, message){
