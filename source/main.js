@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const {Client, MessageEmbed, Collection} = require('discord.js');
 
 const client = new Discord.Client();
 
@@ -9,22 +9,6 @@ const ms = require('ms');
 const version = '1.0.8';
 
 const owner = '</ramer>';
-
-const fs = require('fs');
-
-client.commands = new Discord.Collection();
-
-const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
-
-for(const file of commandFiles){
-  const command = require(`./commands/${file}`);
-
-  client.commands.set(command.name, command);
-}
-
-
-
-
 
 var severs = {};
 
@@ -61,7 +45,15 @@ client.on('message', async message => {
     message.channel.send(message.author.displayAvatarURL());
   }
   if (message.content === '^erweck') {
-    client.commands.get('erweck').execute(message, args);
+    const embedErweck = new Discord.MessageEmbed()
+        .setTitle('Erweck sucks lol salamtroll haha')
+        .setColor(0xFC00FF)
+        .addField('El a scris comanda', message.author.username + ' e vina lui nu a mea')
+        .addField('Adevar', 'Erweck e prost hahaha lol')
+        .addField('Plus dovadaaa', 'nu e dovada ca e prea prost hahaha')
+        .addField('Esti naber', 'Ai bulan si esti si nici cu ala nu poti sa faci peste 3 killuri')
+        .setThumbnail(message.author.avatarURL);
+        message.channel.send(embedErweck);
   }
 
   if (message.content === '^ramer')
@@ -75,8 +67,14 @@ client.on('message', async message => {
   }
 
   if (message.content === '^tali'){
-    client.commands.get('tali').execute(message, args);
+    const embedTali = new Discord.MessageEmbed()
+    .setTitle ('Tali$ - Diss Tali')
+    .setColor ('0xFF0000')
+    .addField ('Tali, ye ye ye', 'Esti prost, tali, sau prost')
+    .addField('prost!', 'o ye');
 
+    message.channel.send (embedTali);
+    message.channel.send ('Ti-am dat-o rau de tot tali lasa-te de viata si du-te sa plangi intr-un colt si da-ti alt+f4 la viata ba hahaha');
   }
 
 
@@ -175,7 +173,19 @@ client.on('message', async message => {
   }
 
     if(message.content.startsWith === '^8ball'){
-      client.commands.get('8ball').execute(message, args);
+      if(!args[2]) return message.reply("Please ask a full question!")
+      let replies = ["Yes.", "NO.", "Idk", "Give me a cookie", "Intreaba mai tz"];
+
+      let result = Math.floor((Math.random() * replies.length))
+      let question = args.slice(0).join(" ");
+
+      const embedBall = new Discord.MessageEmbed()
+      .setAuthor(message.author.tag)
+      .setColor(0x007AFF)
+      .addField('Intrebarea ta: ', question)
+      .addField('Raspuns: ', replies[result]);
+
+      message.channel.send(embedBall);
     }
 
   if (message.content === '^play'){
