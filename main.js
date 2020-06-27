@@ -227,10 +227,27 @@ client.on('message', async message => {
       if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection){
           play(connection,message);
       })
-
-
+       
+  
   }
+          if(message.content.startsWith === '^8ball'){
+      if(!args[2]) return message.reply("Please ask a full question!");
+      let replies = ["Yas", "Nuu", "Normal", "Da-mi 5 lei si iti raspund", "Lasa-ma ma joc roblox"];
 
+      let result = Math.floor((Math.random() * replies.length));
+      let question = args.slice(1).join(" ");
+
+      let embedBall = new Discord.MessageEmbed()
+      .setAuthor(message.author.tag)
+      .setColor(0xAF00FF)
+      .addField("Intrebarea ta ", question)
+      .addField("Raspunsul meu ", replies[result]);
+      message.channel.send(embedBall);
+    };
+
+    if (message.content === 'force'){
+      message.channel.send('thelike e prost')
+    }
 
 })
 
