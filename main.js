@@ -10,7 +10,7 @@ const version = '1.0.8';
 
 const owner = '</ramer>';
 
-var severs = {};
+var servers = {};
 
 client.on('ready', () => {
   console.log('Inform is online!');
@@ -168,89 +168,15 @@ client.on('message', async message => {
 
     if(message.content === '^sevraj'){
       const embedSevraj = new Discord.MessageEmbed()
-      .setTitle('Te-am vazut pe Cele mai nenasoale pagini, bro');
+      .setTitle('Te-am vazut pe Cele mai nenasoale pagini, bro')
+      .addField('Esti jmk', 'papapa');
 
       message.channel.send(embedSevraj);
     }
-
-    if(message.content.startsWith === '^8ball'){
-      if(!args[2]) return message.reply("Please ask a full question!")
-      let replies = ["Yes.", "NO.", "Idk", "Give me a cookie", "Intreaba mai tz"];
-
-      let result = Math.floor((Math.random() * replies.length))
-      let question = args.slice(0).join(" ");
-
-      const embedBall = new Discord.MessageEmbed()
-      .setAuthor(message.author.tag)
-      .setColor(0x007AFF)
-      .addField('Intrebarea ta: ', question)
-      .addField('Raspuns: ', replies[result]);
-
-      message.channel.send(embedBall);
-    }
-
-  if (message.content === '^play'){
-      
-        function play(connection, message){
-          var server = servers[message.guild.id];
-
-          server.dispatcher = connection.play(ytdl(server.queue[0], {filter: "audioonly"}));
-
-          server.queue.shift();
-
-          server.dispatcher.on("end", function(){
-            if(server.queue[0]){
-              play(connection, message)
-            }else {
-              connection.disconnect();
-            }
-          })
-        }
-    
-        if(!args[1]){
-        message.channel.send('Trebuie sa scrii linkul melodiei!');
-        return;
-      }
-
-      if(!message.member.voiceChannel){
-        message.channel.send("Trebuie sa fii intr-un voice-channel!");
-        return;
-      }
-
-      if(!servers[message.guild.id]) servers[message.guild.id] = {
-        queue: []
-      }
-
-      var server = servers[message.guild.id];
-
-      server.queue.push(args[1]);
-
-      if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection){
-          play(connection,message);
-      })
-       
   
   }
-          if(message.content.startsWith'^8ball'){
-      if(!args[2]) return message.reply("Please ask a full question!");
-      let replies = ["Yas", "Nuu", "Normal", "Da-mi 5 lei si iti raspund", "Lasa-ma ma joc roblox"];
 
-      let result = Math.floor((Math.random() * replies.length));
-      let question = args.slice(1).join(" ");
-
-      let embedBall = new Discord.MessageEmbed()
-      .setAuthor(message.author.tag)
-      .setColor(0xAF00FF)
-      .addField("Intrebarea ta ", question)
-      .addField("Raspunsul meu ", replies[result]);
-      message.channel.send(embedBall);
-    };
-
-    if (message.content === 'force'){
-      message.channel.send('thelike e prost')
-    }
-
-})
+)
 
 client.on('guildMemberAdd', member => {
   // Send the message to a designated channel on a server:
