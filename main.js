@@ -164,8 +164,14 @@ client.on('message', async message => {
         .setTitle(`Ownerul meu este </ramer>#9999`);
 
       message.channel.send(embedOwner);
-
   }
+
+    if(message.content === 'sevraj'){
+      const embedSevraj = new Discord.MessageEmbed()
+      .setTitle('Te-am vazut pe "Cele mai nenasoale pagini", bro');
+
+      message.channel.send(embedSevraj);
+    }
 
     if(message.content.startsWith === '^8ball'){
       if(!args[2]) return message.reply("Please ask a full question!")
