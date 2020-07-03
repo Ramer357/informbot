@@ -130,7 +130,7 @@ client.on('message', async message => {
     }
   }
 
-  if (message.content.startsWith === '^ban') 
+  if (message.content.startsWith('^ban')) 
     if (!message.member.roles.cache.find(r => r.name === "Baieti Amuzanti")) return message.channel.send('Nu ai permisiuni de a da ban!')
     if (!args[1]) message.channel.send('Trebuie sa ii dai tag celui caruia vrei sa-i dai ban!')
 
@@ -157,8 +157,6 @@ client.on('message', async message => {
     } else {
       message.reply('Acel utilizator nu este in acest server!')
     
-    
-
     }
 
     if (message.content === '^owner') {
