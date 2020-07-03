@@ -166,9 +166,9 @@ client.on('message', async message => {
       message.channel.send(embedOwner);
   }
 
-    if(message.content === 'sevraj'){
+    if(message.content === '^sevraj'){
       const embedSevraj = new Discord.MessageEmbed()
-      .setTitle('Te-am vazut pe "Cele mai nenasoale pagini", bro');
+      .setTitle('Te-am vazut pe Cele mai nenasoale pagini, bro');
 
       message.channel.send(embedSevraj);
     }
@@ -231,7 +231,7 @@ client.on('message', async message => {
        
   
   }
-          if(message.content.startsWith === '^8ball'){
+          if(message.content.startsWith'^8ball'){
       if(!args[2]) return message.reply("Please ask a full question!");
       let replies = ["Yas", "Nuu", "Normal", "Da-mi 5 lei si iti raspund", "Lasa-ma ma joc roblox"];
 
